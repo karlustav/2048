@@ -1,8 +1,11 @@
-public class Valjak {
-    private Ruut[][] valjak = new Ruut[4][4];
+import java.util.ArrayList;
+import java.util.Arrays;
 
-    public Valjak(Ruut[][] valjak) {
-        this.valjak = valjak;
+public class Valjak {
+    private Ruut[][] valjak;
+
+    public Valjak() {
+        valjak = new Ruut[4][4];
     }
 
     public Ruut[][] getValjak() {
@@ -22,6 +25,28 @@ public class Valjak {
     }
 
     public Ruut[][] generateNewTile() {
+
+        int newTileValue = 2;
+        if (Math.random() <= 0.1) {
+            newTileValue = 4;
+        }
+
+        int nullcount = 0;
+        ArrayList<Integer[]> nullPositions = new ArrayList<Integer[]>();
+        for (int i = 0; i < valjak.length; i++) {
+            for (int j = 0; j < valjak[i].length; j++) {
+                if (valjak[i][j] == null) {
+                    nullcount++;
+                    nullPositions.add(new Integer[]{i, j});
+                }
+            }
+        }
+
+        System.out.println("nullcount: " + nullcount);
+        for (int i = 0; i < nullPositions.size(); i++) {
+            System.out.println(Arrays.toString(nullPositions.get(i)));
+        }
+
         return null;
     }
 
