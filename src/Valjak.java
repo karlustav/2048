@@ -26,6 +26,7 @@ public class Valjak {
     }
 
     public boolean checkGameOver() {
+
         return false;
     }
 
