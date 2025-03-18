@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Valjak valjak = new Valjak();
         Scanner scanner = new Scanner(System.in);
-
+        int skoor = 0;
         while(true) {
             System.out.println(Arrays.deepToString(valjak.getValjak())); // prindi väljak, tuleb panna pärast sinna kus on suunainput valitud
             if (valjak.checkGameOver()) {
