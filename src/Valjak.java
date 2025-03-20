@@ -98,6 +98,16 @@ public class Valjak {
         return false;
     }
 
+    // meetod, et vaadata kas kuskil on kõrvuti olevaid samu numbreid, mida saab kokku liita.
+    public boolean kasOnVoimalikLiita(){
+        for (int rida = 0; rida < valjak.length; rida++) {
+            for (int veerg = 0; veerg < valjak[0].length; veerg++) {
+
+            }
+        }
+        return false;
+    }
+
     public void addRuut(Ruut ruut) {
         valjak[ruut.getY()][ruut.getX()] = ruut;
         ruudud.add(ruut);

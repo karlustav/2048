@@ -26,6 +26,7 @@ public class Ruut {
             // Kui üleval on ruut sama väärtusega.
             else if (checkCollision(suund) && ruutAsukohaJargi(this.x, this.y - 1).getVaartus() == this.vaartus) {
                 ruutAsukohaJargi(this.x, this.y - 1).setVaartus(this.vaartus * 2);
+                Main.skoor += this.vaartus * 2;
                 valjak.getValjak()[this.y][this.x] = null;
                 valjak.getRuudud().remove(this);
                 return;
@@ -41,6 +42,7 @@ public class Ruut {
                 return;
             } else if (checkCollision(suund) && ruutAsukohaJargi(this.x, this.y + 1).getVaartus() == this.vaartus) {
                 ruutAsukohaJargi(this.x, this.y + 1).setVaartus(this.vaartus * 2);
+                Main.skoor += this.vaartus * 2;
                 valjak.getValjak()[this.y][this.x] = null;
                 valjak.getRuudud().remove(this);
                 return;
@@ -56,6 +58,7 @@ public class Ruut {
                 return;
             } else if (checkCollision(suund) && ruutAsukohaJargi(this.x + 1, this.y).getVaartus() == this.vaartus) {
                 ruutAsukohaJargi(this.x + 1, this.y).setVaartus(this.vaartus * 2);
+                Main.skoor += this.vaartus * 2;
                 valjak.getValjak()[this.y][this.x] = null;
                 valjak.getRuudud().remove(this);
                 return;
@@ -71,6 +74,7 @@ public class Ruut {
                 return;
             } else if (checkCollision(suund) && ruutAsukohaJargi(this.x - 1, this.y).getVaartus() == this.vaartus) {
                 ruutAsukohaJargi(this.x - 1, this.y).setVaartus(this.vaartus * 2);
+                Main.skoor += this.vaartus * 2;
                 valjak.getValjak()[this.y][this.x] = null;
                 valjak.getRuudud().remove(this);
                 return;
