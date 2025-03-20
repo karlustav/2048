@@ -26,6 +26,18 @@ public class Main {
             if (input.equals("q")) {
                 break;
             }
+            if (input.equals("w")) {
+                input = "yles";
+            }
+            if (input.equals("a")) {
+                input = "vasakule";
+            }
+            if (input.equals("s")) {
+                input = "alla";
+            }
+            if (input.equals("d")) {
+                input = "paremale";
+            }
 
 
             valjak.update(input);

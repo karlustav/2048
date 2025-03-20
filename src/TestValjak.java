@@ -19,6 +19,8 @@ public class TestValjak {
             String input = scanner.nextLine();
             if (input.equals("q")) {
                 break;
+
+
             }
 
 
