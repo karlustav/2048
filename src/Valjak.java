@@ -68,6 +68,8 @@ public class Valjak {
     }
 
     private String kollane = "\u001B[33m";
+    private String valge = "\u001B[0m";
+
     String value;
     // Getter
     public ArrayList<Ruut> getRuudud() {
@@ -84,14 +86,14 @@ public class Valjak {
                 }
                 System.out.print(value);
                 if (j < valjak[i].length - 1) {
-                    System.out.print(kollane + "  |  ");
+                    System.out.print(kollane + "  |  " + valge);
                 }
             }
             System.out.println();
 
             if (i < valjak.length -1 ) {
                 for (int j = 0; j < valjak[i].length; j++) {
-                    System.out.print("----");
+                    System.out.print(kollane + "----");
                     if(j < valjak[i].length-1){
                         System.out.print("+");
                     }
