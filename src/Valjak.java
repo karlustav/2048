@@ -10,6 +10,8 @@ public class Valjak {
         ruudud = new ArrayList<Ruut>();
     }
 
+
+
     public Ruut[][] getValjak() {
         return valjak;
     }
@@ -19,7 +21,20 @@ public class Valjak {
     }
 
     public void update(String suund) {
-        return;
+        if (suund.equals("yles")) {
+            for (int i = 0; i < 3; i++) {
+                for (int y = 0; y < 4; y++) {
+                    for (int x = 0; x < 4; x++) {
+                        Ruut ruut = valjak[y][x];
+                        if (ruut != null) {
+                            ruut.liigu(suund);
+                        }
+                    }
+                }
+            }
+        }
+
+        generateNewTile();
     }
 
     public void generateNewTile() {
@@ -39,7 +54,7 @@ public class Valjak {
         }
 
         int mitmes = (int) (Math.random() * nullPositions.size());
-        Ruut uusRuut = new Ruut(newTileValue, nullPositions.get(mitmes)[0], nullPositions.get(mitmes)[1]);
+        Ruut uusRuut = new Ruut(newTileValue, nullPositions.get(mitmes)[0], nullPositions.get(mitmes)[1], this);
         addRuut(uusRuut);
     }
 
