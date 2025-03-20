@@ -19,8 +19,6 @@ public class TestValjak {
             if (input.equals("q")) {
                 break;
             }
-
-
             valjak.update(input);
 
         }
