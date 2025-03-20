@@ -113,14 +113,40 @@ public class Valjak {
         ruudud.add(ruut);
     }
 
+    private String kollane = "\u001B[33m";
+    private String valge = "\u001B[0m";
+
+    String value;
     // Getter
     public ArrayList<Ruut> getRuudud() {
         return ruudud;
     }
-
     public void printValjak() {
         for (int i = 0; i < valjak.length; i++) {
-            System.out.println(Arrays.toString(valjak[i]));
+            for (int j = 0; j < valjak[i].length; j++) {
+                Ruut muudetav = valjak[i][j];
+                if (muudetav != null) {
+                    value = muudetav.toString();
+                } else {
+                    value = " ";
+                }
+                System.out.print(value);
+                if (j < valjak[i].length - 1) {
+                    System.out.print(kollane + "  |  " + valge);
+                }
+            }
+            System.out.println();
+
+            if (i < valjak.length -1 ) {
+                for (int j = 0; j < valjak[i].length; j++) {
+                    System.out.print(kollane + "----");
+                    if(j < valjak[i].length-1){
+                        System.out.print("+");
+                    }
+                }
+            }
+            System.out.println();
+          //  System.out.println(Arrays.toString(valjak[i]));
         }
     }
 

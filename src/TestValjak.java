@@ -22,8 +22,6 @@ public class TestValjak {
 
 
             }
-
-
             valjak.update(input);
 
         }
