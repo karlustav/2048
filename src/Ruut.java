@@ -12,50 +12,72 @@ public class Ruut {
     }
 
     public void liigu(String suund) {
+        int oldX = x;
+        int oldY = y;
         if (suund.equals("yles")) {
-            int oldX = x;
-            int oldY = y;
+            // Kui üleval on vaba koht
             if (y != 0 && !checkCollision("yles")) {
                 y--;
                 valjak.getValjak()[y][x] = this;
                 valjak.getValjak()[oldY][oldX] = null;
+                valjak.getRuudud().remove(ruutAsukohaJargi(oldX, oldY));
                 return;
             }
+            // Kui üleval on ruut sama väärtusega.
             else if (checkCollision(suund) && ruutAsukohaJargi(this.x, this.y - 1).getVaartus() == this.vaartus) {
                 ruutAsukohaJargi(this.x, this.y - 1).setVaartus(this.vaartus * 2);
                 valjak.getValjak()[this.y][this.x] = null;
+                valjak.getRuudud().remove(this);
                 return;
             }
         }
+
         else if (suund.equals("alla")) {
             if (y != 3 && !checkCollision("alla")) {
                 y++;
-            }
-            else if (ruutAsukohaJargi(this.x, this.y + 1).getVaartus() == this.vaartus) {
+                valjak.getValjak()[y][x] = this;
+                valjak.getValjak()[oldY][oldX] = null;
+                valjak.getRuudud().remove(ruutAsukohaJargi(oldX, oldY));
+                return;
+            } else if (checkCollision(suund) && ruutAsukohaJargi(this.x, this.y + 1).getVaartus() == this.vaartus) {
                 ruutAsukohaJargi(this.x, this.y + 1).setVaartus(this.vaartus * 2);
+                valjak.getValjak()[this.y][this.x] = null;
+                valjak.getRuudud().remove(this);
+                return;
             }
-            valjak.getValjak()[this.y][this.x] = null;
         }
+
         else if (suund.equals("paremale")) {
             if (x != 3 && !checkCollision("paremale")) {
                 x++;
-            }
-            else if (ruutAsukohaJargi(this.x + 1, this.y).getVaartus() == this.vaartus) {
+                valjak.getValjak()[y][x] = this;
+                valjak.getValjak()[oldY][oldX] = null;
+                valjak.getRuudud().remove(ruutAsukohaJargi(oldX, oldY));
+                return;
+            } else if (checkCollision(suund) && ruutAsukohaJargi(this.x + 1, this.y).getVaartus() == this.vaartus) {
                 ruutAsukohaJargi(this.x + 1, this.y).setVaartus(this.vaartus * 2);
+                valjak.getValjak()[this.y][this.x] = null;
+                valjak.getRuudud().remove(this);
+                return;
             }
-            valjak.getValjak()[this.y][this.x] = null;
         }
+
         else if (suund.equals("vasakule")) {
             if (x != 0 && !checkCollision("vasakule")) {
                 x--;
-            }
-            else if (ruutAsukohaJargi(this.x - 1, this.y).getVaartus() == this.vaartus) {
+                valjak.getValjak()[y][x] = this;
+                valjak.getValjak()[oldY][oldX] = null;
+                valjak.getRuudud().remove(ruutAsukohaJargi(oldX, oldY));
+                return;
+            } else if (checkCollision(suund) && ruutAsukohaJargi(this.x - 1, this.y).getVaartus() == this.vaartus) {
                 ruutAsukohaJargi(this.x - 1, this.y).setVaartus(this.vaartus * 2);
+                valjak.getValjak()[this.y][this.x] = null;
+                valjak.getRuudud().remove(this);
+                return;
             }
-            valjak.getValjak()[this.y][this.x] = null;
-
         }
     }
+
 
     public Ruut ruutAsukohaJargi(int x, int y) {
         for (Ruut ruut: valjak.getRuudud()) {
@@ -69,9 +91,6 @@ public class Ruut {
     public boolean checkCollision(String suund) {
         boolean onCollision = false;
         for (Ruut teineRuut: valjak.getRuudud()) {
-            if (onCollision) {
-                return true;
-            }
             if (suund.equals("yles")) {
                 onCollision = teineRuut.getY() == this.y - 1 && teineRuut.getX() == this.x;
             }
@@ -83,6 +102,9 @@ public class Ruut {
             }
             else if (suund.equals("vasakule")) {
                 onCollision =  teineRuut.getX() == this.x - 1 && teineRuut.getY() == this.y;
+            }
+            if (onCollision) {
+                return true;
             }
         }
         return false;

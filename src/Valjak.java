@@ -33,6 +33,42 @@ public class Valjak {
                 }
             }
         }
+        else if (suund.equals("alla")) {
+            for (int i = 0; i < 3; i++) {
+                for (int y = 3; y >= 0; y--) {
+                    for (int x = 0; x < 4; x++) {
+                        Ruut ruut = valjak[y][x];
+                        if (ruut != null) {
+                            ruut.liigu(suund);
+                        }
+                    }
+                }
+            }
+        }
+        else if (suund.equals("vasakule")) {
+            for (int i = 0; i < 3; i++) {
+                for (int x = 0; x < 4; x++) {
+                    for (int y = 0; y < 4; y++) {
+                        Ruut ruut = valjak[y][x];
+                        if (ruut != null) {
+                            ruut.liigu(suund);
+                        }
+                    }
+                }
+            }
+        }
+        else if (suund.equals("paremale")) {
+            for (int i = 0; i < 3; i++) {
+                for (int x = 3; x >= 0; x--) {
+                    for (int y = 0; y < 4; y++) {
+                        Ruut ruut = valjak[y][x];
+                        if (ruut != null) {
+                            ruut.liigu(suund);
+                        }
+                    }
+                }
+            }
+        }
 
         generateNewTile();
     }
@@ -77,6 +113,5 @@ public class Valjak {
             System.out.println(Arrays.toString(valjak[i]));
         }
     }
-
 
 }

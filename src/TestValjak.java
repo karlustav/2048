@@ -14,6 +14,7 @@ public class TestValjak {
                 System.out.println("Lõppskoor: " + skoor);
                 System.exit(0); // lõpeta programmi töö
             }
+
             valjak.printValjak();
             String input = scanner.nextLine();
             if (input.equals("q")) {
