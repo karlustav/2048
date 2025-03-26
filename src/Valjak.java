@@ -139,10 +139,8 @@ public class Valjak {
 
             if (i < valjak.length -1 ) {
                 for (int j = 0; j < valjak[i].length; j++) {
-                    System.out.print(kollane + "----");
-                    if(j < valjak[i].length-1){
-                        System.out.print("+");
-                    }
+                    System.out.print(kollane + "-----" + valge);
+
                 }
             }
             System.out.println();
