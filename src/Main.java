@@ -45,21 +45,25 @@ public class Main {
             if (input.equals("q")) {
                 break;
             }
-            if (input.equals("w")) {
+            else if (input.equals("w")) {
                 input = "yles";
             }
-            if (input.equals("a")) {
+            else if (input.equals("a")) {
                 input = "vasakule";
             }
-            if (input.equals("s")) {
+            else if (input.equals("s")) {
                 input = "alla";
             }
-            if (input.equals("d")) {
+            else if (input.equals("d")) {
                 input = "paremale";
             }
-            if (input.equals("o")) {
+            else if (input.equals("o")) {
                 System.out.println("ooooooooooooooooooooooooooooooooo");
             }
+            else {
+                continue;
+            }
+
             //System.out.println(keyQueue);
 
             valjak.update(input);
