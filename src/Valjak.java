@@ -11,7 +11,6 @@ public class Valjak {
     }
 
 
-
     public Ruut[][] getValjak() {
         return valjak;
     }
@@ -113,38 +112,62 @@ public class Valjak {
         ruudud.add(ruut);
     }
 
-    private String kollane = "\u001B[33m";
-    private String valge = "\u001B[0m";
-
     String value;
     // Getter
     public ArrayList<Ruut> getRuudud() {
         return ruudud;
     }
+
+    // Värvide osa on AI generated.
+    private static final String RESET = "\u001B[0m";
+
+    public static String getColor(int value) {
+        return switch (value) {
+            case 2 -> "\u001B[38;5;34m";     // Green
+            case 4 -> "\u001B[38;5;120m";    // Light Green
+            case 8 -> "\u001B[38;5;43m";    // Pale Lime Green
+            case 16 -> "\u001B[38;5;51m";    // Cyan
+            case 32 -> "\u001B[38;5;27m";    // Blue
+            case 64 -> "\u001B[38;5;63m";    // Indigo
+            case 128 -> "\u001B[38;5;165m";  // Magenta-Violet
+            case 256 -> "\u001B[38;5;196m";  // Red
+            case 512 -> "\u001B[38;5;208m";  // Orange
+            case 1024 -> "\u001B[38;5;220m"; // Dark Yellow
+            case 2048 -> "\u001B[38;5;226m"; // Yellow
+            default -> "\u001B[0m";          // Reset
+        };
+    }
+
+    // See ka AI generated
+    public static void printColorPreview() {
+        int[] tiles = {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048};
+
+        for (int tile : tiles) {
+            String color = getColor(tile);
+            System.out.printf("%s%5s\u001B[0m ", color, tile); // 5-width padding for alignment
+        }
+        System.out.println(); // Newline at end
+    }
+
     public void printValjak() {
+        System.out.println("+" + ("-".repeat(6) + "+").repeat(4));
         for (int i = 0; i < valjak.length; i++) {
             for (int j = 0; j < valjak[i].length; j++) {
                 Ruut muudetav = valjak[i][j];
+                String color;
                 if (muudetav != null) {
-                    value = muudetav.toString();
-                } else {
-                    value = " ";
+                    color = getColor(muudetav.getVaartus());
                 }
-                System.out.print(value);
-                if (j < valjak[i].length - 1) {
-                    System.out.print(kollane + "  |  " + valge);
+                else {
+                    color = RESET;
                 }
-            }
-            System.out.println();
-
-            if (i < valjak.length -1 ) {
-                for (int j = 0; j < valjak[i].length; j++) {
-                    System.out.print(kollane + "-----" + valge);
-
+                System.out.printf("| %s%4s%s ", color, (muudetav == null ? " " : muudetav.getVaartus()), RESET);
+                if (j == 3) {
+                    System.out.print("|");
                 }
             }
             System.out.println();
-          //  System.out.println(Arrays.toString(valjak[i]));
+            System.out.println("+" + ("-".repeat(6) + "+").repeat(4));
         }
     }
 

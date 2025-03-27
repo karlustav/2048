@@ -11,6 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         Valjak valjak = new Valjak();
+        // Valjak.printColorPreview();
         Scanner scanner = new Scanner(System.in);
         valjak.generateNewTile();
         while(true) {
