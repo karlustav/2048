@@ -133,7 +133,7 @@ public class Valjak {
             case 256 -> "\u001B[38;5;196m";  // Red
             case 512 -> "\u001B[38;5;208m";  // Orange
             case 1024 -> "\u001B[38;5;220m"; // Dark Yellow
-            case 2048 -> "\u001B[38;5;226m"; // Yellow
+            case 2048 -> "\u001B[38;5;226m";// Yellow
             default -> "\u001B[0m";          // Reset
         };
     }

@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import javax.swing.*;
 
 
 import java.util.Arrays;
@@ -31,10 +32,12 @@ public class Main {
                 System.exit(0); // lõpeta programmi töö
             }
 
-            abi = true;
             valjak.printValjak();
-            while (abi) {
-                input = String.valueOf(keyQueue.poll());
+            input = null;
+            try {
+                input = String.valueOf(keyQueue.take());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
 
@@ -62,6 +65,7 @@ public class Main {
             valjak.update(input);
         }
     }
+
     private static void startKeyListener() {
         Frame frame = new Frame();
         frame.setUndecorated(true);
@@ -76,4 +80,5 @@ public class Main {
             }
         });
     }
+
 }
