@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+public class TestValjak {
 
     private static final BlockingQueue<Character> keyQueue = new ArrayBlockingQueue<>(1);
 
@@ -19,19 +19,20 @@ public class Main {
     public static void main(String[] args) {
         String input = null;
         Valjak valjak = new Valjak();
-        Valjak.printColorPreview();
+        valjak.generateGameOverBoard();
         //Scanner scanner = new Scanner(System.in);
         startKeyListener();
-        valjak.generateNewTile();
         while(true) {
             System.out.println(skoor);
             valjak.kasOnVoimalikLiita();
+
             valjak.printValjak();
             if (valjak.checkGameOver()) {
                 System.out.println("Mäng on läbi");
                 System.out.println("Lõppskoor: " + skoor);
                 System.exit(0); // lõpeta programmi töö
             }
+
             input = null;
             try {
                 input = String.valueOf(keyQueue.take());

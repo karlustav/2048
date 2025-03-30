@@ -93,8 +93,83 @@ public class Valjak {
         addRuut(uusRuut);
     }
 
+    public void updateTest(Valjak testValjak, String suund) {
+        if (suund.equals("yles")) {
+            for (int i = 0; i < 3; i++) {
+                for (int y = 0; y < 4; y++) {
+                    for (int x = 0; x < 4; x++) {
+                        Ruut ruut = testValjak.getValjak()[y][x];
+                        if (ruut != null) {
+                            ruut.liigu(suund);
+                        }
+                    }
+                }
+            }
+        }
+        else if (suund.equals("alla")) {
+            for (int i = 0; i < 3; i++) {
+                for (int y = 3; y >= 0; y--) {
+                    for (int x = 0; x < 4; x++) {
+                        Ruut ruut = testValjak.getValjak()[y][x];
+                        if (ruut != null) {
+                            ruut.liigu(suund);
+                        }
+                    }
+                }
+            }
+        }
+        else if (suund.equals("vasakule")) {
+            for (int i = 0; i < 3; i++) {
+                for (int x = 0; x < 4; x++) {
+                    for (int y = 0; y < 4; y++) {
+                        Ruut ruut = testValjak.getValjak()[y][x];
+                        if (ruut != null) {
+                            ruut.liigu(suund);
+                        }
+                    }
+                }
+            }
+        }
+        else if (suund.equals("paremale")) {
+            for (int i = 0; i < 3; i++) {
+                for (int x = 3; x >= 0; x--) {
+                    for (int y = 0; y < 4; y++) {
+                        Ruut ruut = testValjak.getValjak()[y][x];
+                        if (ruut != null) {
+                            ruut.liigu(suund);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public boolean checkGameOver() {
-        return false;
+        String vana = Arrays.deepToString(valjak);
+//        for (int i = valjak.length - 1; i >= 0; i--) {
+//            System.out.println(Arrays.toString(valjak[i]));
+//        }
+        String[] suunad = {"yles", "alla", "paremale", "vasakule"};
+        for (String suund : suunad) {
+            Valjak testValjak = new Valjak();
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    if (this.valjak[i][j] != null) {
+                        Ruut vanaRuut = this.valjak[i][j];
+                        Ruut copy = new Ruut(vanaRuut.getVaartus(), i, j, testValjak);
+                        testValjak.addRuut(copy);
+                    }
+                }
+            }
+
+            updateTest(testValjak, suund); // proovi iga suunaga liikumist
+            // System.out.println(Arrays.deepToString(testValjak.getValjak()));
+
+            if (!Arrays.deepToString(testValjak.valjak).equals(vana)) {
+                return false;
+            }
+        }
+        return true; // kui ei muutunud midagi ühegi suuna korral, siis on mäng läbi
     }
 
     // meetod, et vaadata kas kuskil on kõrvuti olevaid samu numbreid, mida saab kokku liita.
@@ -105,6 +180,27 @@ public class Valjak {
             }
         }
         return false;
+    }
+
+    public void generateGameOverBoard() {
+        // Clear current board
+        valjak = new Ruut[4][4];
+        ruudud.clear();
+
+        // Pattern of alternating values with no possible merges
+        int[][] values = {
+                {2, 4, 2, 4},
+                {4, 2, 4, 2},
+                {2, 4, 2, 4},
+                {4, 2, 4, 2}
+        };
+
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 4; x++) {
+                Ruut ruut = new Ruut(values[y][x], y, x, this);
+                addRuut(ruut);
+            }
+        }
     }
 
     public void addRuut(Ruut ruut) {

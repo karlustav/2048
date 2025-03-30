@@ -115,6 +115,14 @@ public class Ruut {
 
     }
 
+    public Valjak getValjak() {
+        return valjak;
+    }
+
+    public void setValjak(Valjak valjak) {
+        this.valjak = valjak;
+    }
+
     public int getVaartus() {
         return vaartus;
     }
