@@ -182,6 +182,7 @@ public class Valjak {
         return false;
     }
 
+    // See on AI-generated funktsioon
     public void generateGameOverBoard() {
         // Clear current board
         valjak = new Ruut[4][4];
