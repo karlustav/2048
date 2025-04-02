@@ -9,6 +9,9 @@ import javax.swing.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
+// Enam-vähem koopia Mainist, seda ei kasutata lõppversioonis
+// Debuggimise eesmärgil
 public class TestValjak {
 
     private static final BlockingQueue<Character> keyQueue = new ArrayBlockingQueue<>(1);
@@ -24,7 +27,6 @@ public class TestValjak {
         startKeyListener();
         while(true) {
             System.out.println(skoor);
-            valjak.kasOnVoimalikLiita();
 
             valjak.printValjak();
             if (valjak.checkGameOver()) {
