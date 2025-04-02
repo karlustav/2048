@@ -20,6 +20,7 @@ public class Valjak {
     }
 
     public void update(String suund) {
+        String vana = Arrays.deepToString(valjak);
         if (suund.equals("yles")) {
             for (int i = 0; i < 3; i++) {
                 for (int y = 0; y < 4; y++) {
@@ -69,7 +70,11 @@ public class Valjak {
             }
         }
 
-        generateNewTile();
+        // Kui valjak muutus parast inputi, siis uus tile
+        if (!vana.equals(Arrays.deepToString(valjak))) {
+            generateNewTile();
+        }
+
     }
 
     public void generateNewTile() {
